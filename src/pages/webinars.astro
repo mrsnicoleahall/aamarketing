@@ -1,0 +1,100 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+
+const webinars = [
+  {
+    title: "The Future of Intake: Intake 360",
+    date: "October 28, 2025",
+    duration: "56 min",
+    desc: "Learn how to capture more leads, never miss a client call, and convert inquiries into signed cases with 24/7 live answering.",
+  },
+  {
+    title: "Mastering Remote Team Management",
+    date: "September 10, 2025",
+    duration: "48 min",
+    desc: "Building and maintaining company culture remotely. With speakers Elley Thomas and Michelle Scherer.",
+  },
+  {
+    title: "Intake Webinar: Cutting Costs & Boosting Conversions",
+    date: "July 19, 2025",
+    duration: "58 min",
+    desc: "How Ethen's team signed over 4,700 cases in three years while cutting intake costs by 40% and increasing conversion rates by 15%.",
+  },
+  {
+    title: "Safeguarding Client Data",
+    date: "October 15, 2024",
+    duration: "73 min",
+    desc: "Cybersecurity for law firms — ransomware, email intrusion, social engineering, and third-party data exposure.",
+  },
+  {
+    title: "The Flawless Intake Deep Dive",
+    date: "May 08, 2024",
+    duration: "120 min",
+    desc: "How to increase signed cases by up to 200% with a flawless intake strategy.",
+  },
+];
+---
+
+<BaseLayout title="Webinars" description="Explore our library of recorded webinar sessions and gain valuable insights from industry leaders.">
+
+  <Hero
+    title="Webinars"
+    subtitle="Explore our library of recorded sessions and gain valuable insights from industry leaders."
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Recorded Webinars
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {webinars.map((webinar) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-brand-navy/10 text-brand-navy">
+                {webinar.duration}
+              </span>
+            </div>
+
+            <h3 class="text-xl font-heading font-bold text-brand-navy mb-2">
+              {webinar.title}
+            </h3>
+
+            <p class="text-sm text-gray-500 mb-3">{webinar.date}</p>
+
+            <p class="text-gray-600 leading-relaxed mb-6 flex-1">
+              {webinar.desc}
+            </p>
+
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-2 text-brand-blue font-heading font-semibold hover:text-brand-navy transition-colors"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Watch Webinar
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Want to See It Live?"
+    body="Join our next webinar to learn how to streamline your firm's operations."
+    buttonText="Contact Us"
+    buttonLink="/contact"
+    variant="blue"
+  />
+
+</BaseLayout>

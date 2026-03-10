@@ -1,0 +1,165 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+import YouTubeEmbed from "@components/YouTubeEmbed.astro";
+
+const perks = [
+  {
+    title: "Remote Environment",
+    desc: "Be part of an innovative virtual team, constantly updating to the latest technologies.",
+    icon: "globe",
+  },
+  {
+    title: "Professional Growth",
+    desc: "Continuous learning and professional development opportunities to advance your career.",
+    icon: "chart",
+  },
+  {
+    title: "Collaborative Culture",
+    desc: "Collaborate and thrive in a supportive work culture with experienced professionals.",
+    icon: "people",
+  },
+  {
+    title: "Competitive Pay",
+    desc: "We believe in paying our employees fairly and treating people right.",
+    icon: "dollar",
+  },
+];
+
+const fitItems = [
+  "Enjoy working in a fast-paced environment",
+  "Have a passion for helping people achieve their goals",
+  "Collaborate well with others",
+  "Are goal-oriented and driven",
+];
+
+const videoIds = ["LWL_3pD5oWk", "Ood5iNtf7VY", "en3ZncZTeZQ"];
+---
+
+<BaseLayout title="Careers at Attorney Assistant" description="Join our mission to help law firms operate more efficiently. We're looking for passionate, driven people.">
+
+  <Hero
+    title="Careers at Attorney Assistant"
+    subtitle="Join our mission to help law firms operate more efficiently. We're looking for passionate, driven people."
+    ctaText="View Open Positions"
+    ctaLink="#apply"
+  />
+
+  <!-- Why Work With Us -->
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Why Work With Us
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {perks.map((perk) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <div class="w-12 h-12 rounded-lg bg-brand-gold/20 flex items-center justify-center mb-5">
+              {perk.icon === "globe" && (
+                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              )}
+              {perk.icon === "chart" && (
+                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M3 3v18h18" />
+                  <path d="M18 9l-5 5-2-2-4 4" />
+                </svg>
+              )}
+              {perk.icon === "people" && (
+                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              )}
+              {perk.icon === "dollar" && (
+                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-xl font-heading font-bold text-brand-navy mb-2">
+              {perk.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {perk.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Great Fit -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-narrow">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-10 text-center">
+        You're A Great Fit If You...
+      </h2>
+
+      <div class="max-w-xl mx-auto space-y-4">
+        {fitItems.map((item) => (
+          <div class="flex items-start gap-4 bg-white rounded-lg p-4 border border-gray-200">
+            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Testimonials -->
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Hear From Our Team
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {videoIds.map((id) => (
+          <YouTubeEmbed videoId={id} title="Team testimonial" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply Now -->
+  <section id="apply" class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-6">
+        Apply Now
+      </h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-8 max-w-2xl mx-auto">
+        At Attorney Assistant, we are committed to providing high-quality talent to law firms.
+        Join our team and make an impact in the legal industry.
+      </p>
+
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-heading font-semibold bg-brand-gold text-brand-black hover:bg-yellow-400 transition-colors"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Ready to Make an Impact?"
+    body="Join the Attorney Assistant team and help transform how law firms operate."
+    buttonText="Apply Now"
+    buttonLink="/contact"
+    variant="blue"
+  />
+
+</BaseLayout>

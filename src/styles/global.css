@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-black: #0b0000;
+    --color-brand-white: #ffffff;
+    --color-brand-gold: #ffaa2b;
+    --color-brand-blue: #50a7dd;
+    --color-brand-steel: #588aa5;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-body text-brand-black bg-brand-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg
+           bg-brand-gold text-brand-black font-heading font-semibold
+           hover:bg-yellow-400 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg
+           border-2 border-brand-blue text-brand-blue font-heading font-semibold
+           hover:bg-brand-blue hover:text-white transition-colors duration-200;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .prose-brand {
+    @apply prose prose-lg max-w-none
+           prose-headings:font-heading prose-headings:text-brand-black
+           prose-a:text-brand-blue prose-a:no-underline hover:prose-a:underline
+           prose-img:rounded-lg;
+  }
+}

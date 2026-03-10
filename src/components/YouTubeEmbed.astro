@@ -1,0 +1,44 @@
+---
+export interface Props {
+  videoId: string;
+  title?: string;
+}
+
+const { videoId, title = "Video testimonial" } = Astro.props;
+const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+---
+
+<div class="youtube-facade group relative aspect-video rounded-xl overflow-hidden bg-gray-900 cursor-pointer" data-video-id={videoId}>
+  <img
+    src={thumbnailUrl}
+    alt={title}
+    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-80"
+    loading="lazy"
+  />
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-110">
+      <svg class="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll(".youtube-facade").forEach(function (el) {
+    el.addEventListener("click", function () {
+      var videoId = el.getAttribute("data-video-id");
+      var iframe = document.createElement("iframe");
+      iframe.setAttribute("src", "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0");
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.style.position = "absolute";
+      iframe.style.inset = "0";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      el.innerHTML = "";
+      el.appendChild(iframe);
+    }, { once: true });
+  });
+</script>

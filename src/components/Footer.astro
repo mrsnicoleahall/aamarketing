@@ -1,0 +1,89 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  services: [
+    { href: "/services/intake-360", label: "Intake 360" },
+    { href: "/services/impact-assistants", label: "Impact Assistants" },
+    { href: "/services", label: "All Services" },
+  ],
+  company: [
+    { href: "/about", label: "About Us" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
+  ],
+  legal: [
+    { href: "/privacy-policy", label: "Privacy Policy" },
+  ],
+};
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="container-wide py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <img src="/brand/logos/Attorney%20Assistant_H_White.svg" alt="Attorney Assistant" class="h-8 w-auto" />
+        </a>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Expert legal support services helping law firms streamline operations and deliver better outcomes.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm uppercase tracking-wider text-brand-gold mb-4">
+          Services
+        </h3>
+        <ul class="space-y-2">
+          {footerLinks.services.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white text-sm transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm uppercase tracking-wider text-brand-gold mb-4">
+          Company
+        </h3>
+        <ul class="space-y-2">
+          {footerLinks.company.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white text-sm transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-heading font-semibold text-sm uppercase tracking-wider text-brand-gold mb-4">
+          Legal
+        </h3>
+        <ul class="space-y-2">
+          {footerLinks.legal.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white text-sm transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-500 text-sm">
+        &copy; {currentYear} Attorney Assistant. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,42 @@
+---
+const rows = [
+  { feature: "Monthly Cost", impact: "Starting at $1,500/mo", inHouse: "$4,000–$6,000+/mo" },
+  { feature: "Training & Onboarding", impact: "Fully trained & ready", inHouse: "Weeks to months" },
+  { feature: "Availability", impact: "24/7 coverage available", inHouse: "Business hours only" },
+  { feature: "Scalability", impact: "Scale up/down instantly", inHouse: "Hiring takes weeks" },
+  { feature: "Management Overhead", impact: "We handle everything", inHouse: "You manage directly" },
+  { feature: "Quality Assurance", impact: "Built-in QA process", inHouse: "Self-monitored" },
+];
+---
+
+<section class="py-16 lg:py-24 bg-white">
+  <div class="container-wide">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-black mb-4">
+        Your <em class="not-italic text-brand-gold italic">Custom</em> Team vs. <em class="not-italic text-brand-blue italic">In-House</em>
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">See how a tailored combination of Impact Assistants and per-task services compares to traditional in-house hires.</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left py-4 px-6 bg-brand-navy text-white font-heading rounded-tl-lg">Feature</th>
+            <th class="text-left py-4 px-6 bg-brand-gold text-brand-black font-heading">Impact Assistant</th>
+            <th class="text-left py-4 px-6 bg-gray-200 text-gray-700 font-heading rounded-tr-lg">In-House Hire</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr class:list={[i % 2 === 0 ? "bg-gray-50" : "bg-white"]}>
+              <td class="py-4 px-6 font-semibold text-brand-black">{row.feature}</td>
+              <td class="py-4 px-6 text-brand-navy font-medium">{row.impact}</td>
+              <td class="py-4 px-6 text-gray-500">{row.inHouse}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

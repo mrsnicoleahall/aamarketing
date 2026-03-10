@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import wpPages from "../../scripts/output/wp-xml-pages.json";
+
+export function getStaticPaths() {
+  const existingSlugs = new Set([
+    "home",
+    "attorney-assistant-home",
+    "home-old",
+    "about",
+    "contact",
+    "privacy-policy",
+    "blog",
+    "services",
+    "intake-360",
+    "impact-assistants",
+    "virtual-legal-assistants",
+    "admin-support",
+    "legal-receptionist",
+    "executive-assistant",
+    "marketing-support",
+    "resources",
+    "guides",
+    "webinars",
+    "all-scripts-2025",
+    "podcast",
+    "our-story",
+    "our-team",
+    "careers",
+    "faq",
+    "reviews",
+  ]);
+  return wpPages
+    .filter((page: any) => !existingSlugs.has(page.slug))
+    .map((page: any) => ({
+      params: { slug: page.slug },
+      props: { page },
+    }));
+}
+
+interface Props {
+  page: {
+    id: string;
+    title: string;
+    slug: string;
+    link: string;
+    content: string;
+  };
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={page.title}>
+  <Hero title={page.title} />
+
+  <article class="wp-content">
+    <div class="container-wide py-12 lg:py-20">
+      <div class="prose-brand" set:html={page.content} />
+    </div>
+  </article>
+</BaseLayout>

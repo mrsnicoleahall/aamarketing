@@ -1,0 +1,136 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+import YouTubeEmbed from "@components/YouTubeEmbed.astro";
+
+const values = [
+  {
+    title: "We treat people right.",
+    desc: "We earn trust by delivering exceptional, reliable service.",
+  },
+  {
+    title: "We solve for our clients.",
+    desc: "We go the extra mile to find solutions to problems.",
+  },
+  {
+    title: "We are deliberate yet innovative.",
+    desc: "Delegation, documentation, duplication, and automation are keys to success.",
+  },
+  {
+    title: "We thrive in diversity.",
+    desc: "Our foundation is built on a diverse background.",
+  },
+  {
+    title: "We deliver.",
+    desc: "We are committed to delivering high-quality people and services.",
+  },
+];
+---
+
+<BaseLayout title="Our Story" description="Built on a simple yet powerful idea: to revolutionize how law firms operate.">
+
+  <Hero
+    title="Our Story"
+    subtitle="Built on a simple yet powerful idea: to revolutionize how law firms operate."
+  />
+
+  <!-- The Founding -->
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        The Founding
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="prose-brand">
+          <p>
+            Attorney Assistant was co-founded by Ethen Ostroff (CEO) and James DiBitetto (COO) in
+            partnership with the legal digital marketing agency SMBTeam. The goal was to create a
+            service that prioritizes clients' needs, ensures fair compensation, and provides
+            opportunities for law firms and virtual assistants.
+          </p>
+          <p>
+            Our journey began with a deep understanding of the unique challenges law firms face.
+            From managing administrative tasks to maintaining client communications, we saw that
+            law firms needed specialized, reliable support.
+          </p>
+        </div>
+
+        <div>
+          <img
+            src="/wp-content/uploads/2025/03/Untitled-design-4.png"
+            alt="Attorney Assistant founders"
+            class="rounded-xl w-full h-64 object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-8">
+        Our <em class="not-italic text-brand-gold italic">Mission</em>
+      </h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto">
+        Our mission is simple: to positively impact as many people as possible. We build custom
+        combinations of services around each firm — from dedicated Impact Assistants and intake
+        support to admin, marketing, and receptionist coverage — so every law firm gets exactly the
+        support it needs to thrive.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+          <p class="text-4xl md:text-5xl font-heading font-bold text-brand-navy mb-2">154+</p>
+          <p class="text-gray-600 font-heading font-semibold">Law Firms Served</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+          <p class="text-4xl md:text-5xl font-heading font-bold text-brand-navy mb-2">521+</p>
+          <p class="text-gray-600 font-heading font-semibold">Employees Globally</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Our Values
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {values.map((value) => (
+          <div class="bg-white rounded-xl shadow-sm border border-brand-gold/30 p-8">
+            <div class="w-1 h-8 bg-brand-gold rounded-full mb-4"></div>
+            <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">
+              {value.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {value.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-wide">
+      <YouTubeEmbed videoId="oISoqSqsHYU" title="Attorney Assistant Story" />
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Join Our Mission"
+    body="Discover how Attorney Assistant can help your firm reach its full potential."
+    buttonText="Get in Touch"
+    buttonLink="/contact"
+  />
+
+</BaseLayout>

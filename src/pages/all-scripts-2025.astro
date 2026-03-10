@@ -1,0 +1,126 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+
+const scripts = [
+  {
+    title: "Premises Liability Intake Script",
+    description: "Injuries on another person's property — slips, trips, or unsafe conditions.",
+    pdf: "/wp-content/uploads/2025/05/Premises-Intake-Script-PDF.pdf",
+    image: "/wp-content/uploads/2025/12/PremisesOnboardingScript1-.webp",
+  },
+  {
+    title: "Bankruptcy Intake Script",
+    description: "Gathering vital information from clients considering Chapter 7 or 13 bankruptcy.",
+    pdf: "/wp-content/uploads/2025/04/Bankruptcy_Intake_Script.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-12.png",
+  },
+  {
+    title: "Workers' Compensation Intake Script",
+    description: "Workplace injury and illness claims — employment and medical info collected up front.",
+    pdf: "/wp-content/uploads/2025/04/Worker_s_Compensation_Intake_Script.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-3.png",
+  },
+  {
+    title: "Short-Term/Long-Term Disability Intake Script",
+    description: "Clients seeking disability benefits — eligibility, documentation, and claim details.",
+    pdf: "/wp-content/uploads/2025/04/Short_Long_Term_Disability_Intake_Script.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-4.png",
+  },
+  {
+    title: "Personal Injury Intake Script",
+    description: "Accidents, medical treatment, insurance, and liability for injury claims.",
+    pdf: "/wp-content/uploads/2025/12/Personal_Injury_Law_scripts.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-6.png",
+  },
+  {
+    title: "Immigration Intake Script",
+    description: "Various immigration cases — visas, green cards, asylum, and more.",
+    pdf: "/wp-content/uploads/2025/04/Immigration_Practice_Area_Scripts.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-7.png",
+  },
+  {
+    title: "Family Law Intake Script",
+    description: "Sensitive conversations around divorce, custody, child and spousal support.",
+    pdf: "/wp-content/uploads/2025/12/1_FAMILY_LAW_-_Intake.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-8.png",
+  },
+  {
+    title: "Estate Planning Intake Script",
+    description: "Wills, trusts, powers of attorney, and healthcare directives.",
+    pdf: "/wp-content/uploads/2025/04/Scripts-_Estate_Planning.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-5.png",
+  },
+  {
+    title: "Employment Litigation Intake Script",
+    description: "Wrongful termination, discrimination, harassment, and wage disputes.",
+    pdf: "/wp-content/uploads/2025/04/Employee_Litigation_Intake_Scripts.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-9.png",
+  },
+  {
+    title: "Criminal Law Intake Script",
+    description: "DUI, assault, or other criminal defense consultations.",
+    pdf: "/wp-content/uploads/2025/04/Criminal_Law_Intake_Scripts.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-10.png",
+  },
+  {
+    title: "Consumer Law Intake Script",
+    description: "Consumer protection issues such as fraud and unfair business practices.",
+    pdf: "/wp-content/uploads/2025/04/Consumer_Law_Practice_Area_Script.pdf",
+    image: "/wp-content/uploads/2025/07/Law-Firm-Intake-Strategy-11.png",
+  },
+];
+---
+
+<BaseLayout title="Intake Scripts" description="Free, ready-to-use intake scripts for every practice area. Download and customize for your firm.">
+
+  <Hero
+    title="Intake Scripts"
+    subtitle="Free, ready-to-use intake scripts for every practice area. Download and customize for your firm."
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {scripts.map((script) => (
+          <div class="group bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-gold/30 transition-all duration-200 overflow-hidden">
+            <img
+              src={script.image}
+              alt={script.title}
+              class="w-full h-48 object-cover rounded-t-xl"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-lg text-brand-black mb-2 group-hover:text-brand-gold transition-colors">
+                {script.title}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                {script.description}
+              </p>
+              <a
+                href={script.pdf}
+                target="_blank"
+                rel="noopener"
+                class="btn-primary text-sm"
+              >
+                Download Script
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Elevate Your Client Intake"
+    body="Download free, ready-to-use legal scripts and transform your intake process."
+    buttonText="Get Started"
+    buttonLink="/contact"
+  />
+
+</BaseLayout>

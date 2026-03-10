@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    number: 1,
+    title: "Tell Us Your Needs",
+    description: "Share your firm's requirements and we'll design a custom solution tailored to your practice areas and workflow.",
+    image: "/wp-content/uploads/2025/09/Overlay-1.png",
+  },
+  {
+    number: 2,
+    title: "Get Matched",
+    description: "We pair you with trained legal support professionals who specialize in your areas of practice.",
+    image: "/wp-content/uploads/2025/09/Overlay-2.png",
+  },
+  {
+    number: 3,
+    title: "Start Working",
+    description: "Your team integrates seamlessly with your firm and starts delivering results from day one.",
+    image: "/wp-content/uploads/2025/09/Overlay-3.png",
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-gray-50">
+  <div class="container-wide">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-black mb-4">
+        <em class="not-italic text-brand-gold italic">Simple.</em> Fast. <em class="not-italic text-brand-blue italic">Effective.</em>
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Getting started is easy — here's how it works.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      {steps.map((step) => (
+        <div class="text-center">
+          <div class="relative w-48 h-48 mx-auto mb-6">
+            <img src={step.image} alt={step.title} class="w-full h-full object-contain" loading="lazy" />
+          </div>
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-gold text-brand-black font-heading font-bold text-lg mb-4">
+            {step.number}
+          </div>
+          <h3 class="text-xl font-heading font-bold text-brand-black mb-3">{step.title}</h3>
+          <p class="text-gray-600 leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

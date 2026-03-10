@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { fetchBlogPostSlugs, fetchBlogPostBySlug } from "@lib/hubspot";
+
+export async function getStaticPaths() {
+  let slugs: { slug: string }[] = [];
+  try {
+    slugs = await fetchBlogPostSlugs();
+  } catch {}
+  return slugs.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await fetchBlogPostBySlug(slug!);
+
+if (!post) {
+  return Astro.redirect("/blog");
+}
+
+const formattedDate = post.publishedDate
+  ? new Date(post.publishedDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
+---
+
+<BaseLayout
+  title={post.seoTitle || post.title}
+  description={post.seoDescription || post.excerpt}
+  image={post.featuredImage}
+  type="article"
+  publishedDate={post.publishedDate}
+  author={post.authorName}
+>
+
+  <article>
+    <!-- Header -->
+    <header class="py-12 lg:py-16 bg-gray-50">
+      <div class="container-narrow">
+        {post.tags && post.tags.length > 0 && (
+          <div class="flex gap-2 mb-4">
+            {post.tags.map((tag: any) => (
+              <a
+                href={`/blog/category/${tag.slug}`}
+                class="text-xs font-medium text-brand-blue bg-blue-50 px-2 py-1 rounded"
+              >
+                {tag.name}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
+          {post.title}
+        </h1>
+
+        {formattedDate && (
+          <div class="text-gray-500">
+            <time datetime={post.publishedDate}>{formattedDate}</time>
+          </div>
+        )}
+      </div>
+    </header>
+
+    {post.featuredImage && (
+      <div class="container-narrow mt-8">
+        <img
+          src={post.featuredImage}
+          alt={post.title}
+          class="w-full rounded-xl"
+        />
+      </div>
+    )}
+
+    <!-- Body -->
+    <div class="container-narrow py-12 prose prose-lg max-w-none">
+      <Fragment set:html={post.postBody} />
+    </div>
+  </article>
+
+</BaseLayout>

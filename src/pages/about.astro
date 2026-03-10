@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+---
+
+<BaseLayout title="About Us" description="Learn about Attorney Assistant and our mission to help law firms streamline their operations.">
+
+  <Hero
+    title="About Attorney Assistant"
+    subtitle="We're on a mission to help law firms operate more efficiently, serve more clients, and achieve better outcomes."
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-narrow">
+      <div class="prose-brand">
+        <h2>Our Mission</h2>
+        <p>
+          Attorney Assistant was founded with a simple belief: law firms deserve better operational support.
+          Too many firms struggle with inefficient intake processes, overwhelmed staff, and missed opportunities.
+          We provide the specialized support that lets attorneys focus on what they do best — practicing law.
+        </p>
+
+        <h2>What We Do</h2>
+        <p>
+          We build custom combinations of legal support services tailored to your firm.
+          From dedicated Impact Assistants who integrate with your team to per-task services like
+          Intake 360, we design the ideal mix so your firm can scale without the overhead of in-house hiring.
+        </p>
+
+        <h2>Our Approach</h2>
+        <p>
+          Every engagement starts with understanding your firm's unique needs. Our team gets to know
+          your practice areas, client base, and growth goals — then recommends the ideal combination
+          of services for scalability. Most of our clients benefit from a strategic mix of Impact Assistants
+          and per-task services, and we continuously refine that mix as your firm evolves.
+        </p>
+
+        <h2>Our Values</h2>
+        <ul>
+          <li><strong>Excellence</strong> — We hold ourselves to the highest standards in every interaction.</li>
+          <li><strong>Reliability</strong> — Your clients and your deadlines depend on us. We deliver.</li>
+          <li><strong>Transparency</strong> — Clear reporting and open communication at every step.</li>
+          <li><strong>Partnership</strong> — We succeed when your firm succeeds.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Let's Work Together"
+    body="Discover how Attorney Assistant can help your firm reach its full potential."
+    buttonText="Get in Touch"
+    buttonLink="/contact"
+    variant="blue"
+  />
+
+</BaseLayout>

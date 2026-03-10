@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import FeatureCard from "@components/FeatureCard.astro";
+import CTABanner from "@components/CTABanner.astro";
+---
+
+<BaseLayout title="Executive Assistant" description="Stop managing your own calendar and email. A virtual executive assistant gives you the support to stay organized and focus on growing your firm.">
+
+  <Hero
+    title="Executive Assistant"
+    subtitle="Stop managing your own calendar and email. A virtual executive assistant gives you the support to stay organized and focus on growing your firm."
+    ctaText="Get Started"
+    ctaLink="/contact"
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Your Virtual <em class="not-italic text-brand-gold italic">Right Hand</em></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">From inbox to itinerary, your executive assistant keeps everything organized so you can lead your firm.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <FeatureCard title="Calendar Coordination" description="Juggle court appearances, team meetings, and client check-ins without double-booking or missed details." icon="clock" />
+        <FeatureCard title="Email Management" description="Inbox filtered, replies drafted, and priority messages flagged — stay focused, not buried in email." icon="document" />
+        <FeatureCard title="Travel Arrangements" description="Flights, hotels, itineraries, and backup plans all handled — whether it's a deposition or a conference." icon="shield" />
+        <FeatureCard title="Event Planning" description="Webinars to firm retreats — invitations, RSVPs, venue booking, and follow-ups handled from start to finish." icon="users" />
+        <FeatureCard title="Project Assistance" description="Track timelines, coordinate deliverables, and maintain progress reports to keep initiatives on target." icon="chart" />
+        <FeatureCard title="Administrative Tasks" description="Reports, presentations, research assistance — your virtual right hand for wherever the day demands." icon="scale" />
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Get Your Executive Assistant"
+    body="Executive assistant support is even more powerful as part of a tailored package. We'll pair it with legal, admin, or receptionist coverage to give you a complete support team."
+    buttonText="Schedule Consultation"
+    buttonLink="/contact"
+    variant="blue"
+  />
+
+</BaseLayout>

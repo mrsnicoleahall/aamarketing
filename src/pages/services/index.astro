@@ -1,0 +1,77 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+
+const services = [
+  {
+    title: "Intake 360",
+    href: "/services/intake-360",
+    description: "Comprehensive client intake services that capture every detail, qualify leads, and set your cases up for success. Our trained intake specialists handle calls 24/7.",
+    features: ["24/7 live answering", "Lead qualification", "Bilingual support", "CRM integration", "Custom scripts"],
+  },
+  {
+    title: "Impact Assistants",
+    href: "/services/impact-assistants",
+    description: "Dedicated virtual assistants trained in legal operations. They integrate with your team to handle administrative tasks, scheduling, document preparation, and more.",
+    features: ["Dedicated assistant", "Legal-trained", "Calendar management", "Document prep", "Client follow-up"],
+  },
+];
+---
+
+<BaseLayout title="Services" description="Explore Attorney Assistant's legal support services including Intake 360 and Impact Assistants.">
+
+  <Hero
+    title="Our Services"
+    subtitle="We build custom combinations of services tailored to your firm's unique needs — so you can scale smarter, not harder."
+  />
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-black mb-6">
+        A <em class="not-italic text-brand-gold italic">Strategic</em> Combination Built for <em class="not-italic text-brand-blue italic">Your Firm</em>
+      </h2>
+      <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+        Most of our clients benefit from a strategic combination of our services. Our team gets to know your firm's unique needs and recommends the ideal solution for scalability — whether that's dedicated Impact Assistants, per-task services like Intake 360, or a custom mix of both.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <div class="grid gap-12">
+        {services.map((service, i) => (
+          <div class:list={["grid md:grid-cols-2 gap-8 items-center", i % 2 === 1 && "md:flex-row-reverse"]}>
+            <div class:list={[i % 2 === 1 && "md:order-2"]}>
+              <h2 class="text-3xl font-heading font-bold mb-4">{service.title}</h2>
+              <p class="text-gray-600 text-lg mb-6">{service.description}</p>
+              <ul class="space-y-2 mb-6">
+                {service.features.map((f) => (
+                  <li class="flex items-center gap-2 text-gray-700">
+                    <svg class="w-5 h-5 text-brand-gold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a href={service.href} class="btn-primary">Learn More</a>
+            </div>
+            <div class:list={["bg-gray-100 rounded-xl h-64 flex items-center justify-center", i % 2 === 1 && "md:order-1"]}>
+              <span class="text-gray-400 font-heading text-lg">{service.title} Illustration</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Let Us Build Your Growth System"
+    body="Every firm is different. We'll learn how your practice operates and recommend the ideal combination of Impact Assistants and per-task services to help you scale."
+    buttonText="Schedule Consultation"
+    buttonLink="/contact"
+    variant="gold"
+  />
+
+</BaseLayout>

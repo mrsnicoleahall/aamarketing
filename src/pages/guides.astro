@@ -1,0 +1,102 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+
+const guides = [
+  {
+    title: "A Cybersecurity Guide For Law Firms",
+    description: "Tips for keeping your client's data safe while working with virtual assistants.",
+    pdf: "/wp-content/uploads/2025/02/AA_Safeguarding_Client_Data_A_Cybersecurity_Guide_for_Businesses_Using_Virtual_Assistants_.pdf",
+    image: "/wp-content/uploads/2025/07/Container-1.png",
+  },
+  {
+    title: "The Modern, Highly Efficient Intake Strategy",
+    description: "Streamline your client intake process with this modern approach.",
+    pdf: "/wp-content/uploads/2025/05/Intake-Systems.pdf",
+    image: "/wp-content/uploads/2025/07/Container-Absolute-Wrapper.png",
+  },
+  {
+    title: "Attorney Assistant Brochure",
+    description: "We place virtual, full-time legal staff exclusively for law firms.",
+    pdf: "/wp-content/uploads/2025/07/AA-Information-Brochure.pdf",
+    image: "/wp-content/uploads/2025/07/Container-Absolute-Wrapper-1.png",
+  },
+  {
+    title: "Attorney Assistant vs. Competitors",
+    description: "VAs trained specifically for law firms. We handle hiring, training, and oversight.",
+    pdf: "/wp-content/uploads/2025/07/Attorney-Assistant-vs.-Competitors.pdf",
+    image: "/wp-content/uploads/2025/07/Container.png",
+  },
+  {
+    title: "Case Maximizer Method: PI Firms",
+    description: "Enhancing client communication for personal injury firms.",
+    pdf: "/wp-content/uploads/2025/07/The-CASE-MAXIMIZER-METHOD.pdf",
+    image: "/wp-content/uploads/2025/07/Container-Absolute-Wrapper-2.png",
+  },
+  {
+    title: "A Lawyer's Guide To Virtual Assistants",
+    description: "Why legal virtual assistants are a must for modern law firms.",
+    pdf: "/wp-content/uploads/2025/05/LawyerE28099s_Guide_to_Virtual_Assistants_Why_Legal_VAs_Are_a_Must_for_Modern_Law_Firms.pdf",
+    image: "/wp-content/uploads/2025/07/Container-Absolute-Wrapper-3.png",
+  },
+  {
+    title: "Client Intake SOP",
+    description: "An efficient intake process that captures, qualifies, and converts legal leads.",
+    pdf: "/wp-content/uploads/2025/08/Client-Intake-SOP-Attorney-Assistant.pdf",
+    image: "/wp-content/uploads/2025/08/AA-LeadMagnetThumbnails-Client-Intake-SOP.webp",
+  },
+];
+---
+
+<BaseLayout title="Guides" description="Access our exclusive collection of legal guides and resources to help your firm operate smarter.">
+
+  <Hero
+    title="Guides"
+    subtitle="Access our exclusive collection of legal guides and resources to help your firm operate smarter."
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {guides.map((guide) => (
+          <div class="group bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-gold/30 transition-all duration-200 overflow-hidden">
+            <img
+              src={guide.image}
+              alt={guide.title}
+              class="w-full h-48 object-cover rounded-t-xl"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-lg text-brand-black mb-2 group-hover:text-brand-gold transition-colors">
+                {guide.title}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                {guide.description}
+              </p>
+              <a
+                href={guide.pdf}
+                target="_blank"
+                rel="noopener"
+                class="btn-primary text-sm"
+              >
+                Download Guide
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Need Personalized Legal Assistance?"
+    body="Our team is ready to help with your specific needs. Contact us today for a consultation."
+    buttonText="Book a Call"
+    buttonLink="/contact"
+  />
+
+</BaseLayout>

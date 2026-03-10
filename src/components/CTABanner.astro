@@ -1,0 +1,35 @@
+---
+export interface Props {
+  heading: string;
+  body?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  variant?: "default" | "gold" | "blue";
+}
+
+const { heading, body, buttonText = "Get Started", buttonLink = "/contact", variant = "default" } = Astro.props;
+
+const bgClasses: Record<string, string> = {
+  default: "bg-brand-navy text-white",
+  gold: "bg-brand-gold text-brand-black",
+  blue: "bg-brand-blue text-white",
+};
+---
+
+<section class:list={["py-16 lg:py-20", bgClasses[variant]]}>
+  <div class="container-wide text-center">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">{heading}</h2>
+    {body && <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">{body}</p>}
+    <a
+      href={buttonLink}
+      class:list={[
+        "inline-flex items-center justify-center px-8 py-4 rounded-lg font-heading font-semibold transition-colors",
+        variant === "gold"
+          ? "bg-gray-900 text-white hover:bg-gray-800"
+          : "bg-brand-gold text-brand-black hover:bg-yellow-400",
+      ]}
+    >
+      {buttonText}
+    </a>
+  </div>
+</section>

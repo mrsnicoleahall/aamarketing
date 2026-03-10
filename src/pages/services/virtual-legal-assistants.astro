@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import FeatureCard from "@components/FeatureCard.astro";
+import CTABanner from "@components/CTABanner.astro";
+---
+
+<BaseLayout title="Virtual Legal Assistants" description="Full-time virtual legal staff placed exclusively for law firms. Free up time to focus on what you do best — practicing law.">
+
+  <Hero
+    title="Virtual Legal Assistants"
+    subtitle="Full-time virtual legal staff placed exclusively for law firms. Free up time to focus on what you do best — practicing law."
+    ctaText="Get Started"
+    ctaLink="/contact"
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">What Your Virtual Legal Assistant <em class="not-italic text-brand-gold italic">Can Do</em></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Dedicated legal support tailored to your firm's needs — so you can focus on practicing law.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <FeatureCard title="Legal Research Support" description="Efficient legal research support — statutes, case law summaries, and jurisdictional requirements delivered without breaking your workflow." icon="document" />
+        <FeatureCard title="Document Preparation & Collection" description="From discovery requests to client letters, your assistant collects, preps, and polishes documents — error-free and ready to go." icon="shield" />
+        <FeatureCard title="CRM Data Entry" description="All client records, forms, and case updates entered into your CRM system accurately and efficiently." icon="clock" />
+        <FeatureCard title="Billing Support" description="Track billable hours, prepare invoices, and manage billing follow-ups to maintain steady cash flow." icon="users" />
+        <FeatureCard title="E-Filing" description="Upload documents to court portals, double-check formatting, and confirm submissions — no missed deadlines." icon="chart" />
+        <FeatureCard title="Client Communication" description="Timely updates, appointment reminders, and status check-ins delivered with polished professionalism." icon="scale" />
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Get Your Virtual Legal Assistant"
+    body="A Virtual Legal Assistant is often the cornerstone of a broader support package. We'll pair yours with admin, receptionist, or marketing coverage to build the ideal team for your firm."
+    buttonText="Schedule Consultation"
+    buttonLink="/contact"
+    variant="blue"
+  />
+
+</BaseLayout>

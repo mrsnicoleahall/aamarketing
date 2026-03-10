@@ -1,0 +1,58 @@
+---
+export interface Props {
+  heading?: string;
+}
+
+const { heading = "Trusted by Over 200 Law Firms" } = Astro.props;
+
+const logos = [
+  { name: "KPT", src: "/wp-content/uploads/2025/09/KPT-logo.png" },
+  { name: "FGPC", src: "/wp-content/uploads/2025/09/FGPC-logo.png" },
+  { name: "RCG", src: "/wp-content/uploads/2025/09/RCG-logo.png" },
+  { name: "MLF", src: "/wp-content/uploads/2025/09/MLF-logo.png" },
+  { name: "KM", src: "/wp-content/uploads/2025/09/KM-logo.png" },
+  { name: "KIL", src: "/wp-content/uploads/2025/09/KIL-logo.png" },
+  { name: "ELG", src: "/wp-content/uploads/2025/09/ELG-logo.png" },
+];
+---
+
+<section class="py-12 bg-white overflow-hidden">
+  <div class="container-wide text-center mb-8">
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-brand-black">{heading}</h2>
+  </div>
+  <div class="logo-marquee">
+    <div class="logo-track">
+      {logos.map((logo) => (
+        <img src={logo.src} alt={logo.name} class="h-12 md:h-16 w-auto object-contain mx-8" loading="lazy" />
+      ))}
+      {logos.map((logo) => (
+        <img src={logo.src} alt={logo.name} class="h-12 md:h-16 w-auto object-contain mx-8" loading="lazy" aria-hidden="true" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-marquee {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .logo-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .logo-track:hover {
+    animation-play-state: paused;
+  }
+</style>

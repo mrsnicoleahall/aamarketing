@@ -1,0 +1,228 @@
+---
+const dropdowns = [
+  {
+    label: "Services",
+    href: "/services",
+    items: [
+      { href: "/services", label: "Overview" },
+      { href: "/services/impact-assistants", label: "Impact Assistants" },
+      { href: "/services/intake-360", label: "Intake 360" },
+      { href: "/services/virtual-legal-assistants", label: "Virtual Legal Assistants" },
+      { href: "/services/admin-support", label: "Admin Support" },
+      { href: "/services/legal-receptionist", label: "Legal Receptionist" },
+      { href: "/services/executive-assistant", label: "Executive Assistant" },
+      { href: "/services/marketing-support", label: "Marketing Support" },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+    items: [
+      { href: "/resources", label: "Resources" },
+      { href: "/guides", label: "Guides" },
+      { href: "/webinars", label: "Webinars" },
+      { href: "/all-scripts-2025", label: "Scripts" },
+      { href: "/podcast", label: "Podcast" },
+    ],
+  },
+  {
+    label: "About",
+    href: "/about",
+    items: [
+      { href: "/about", label: "About Us" },
+      { href: "/our-story", label: "Our Story" },
+      { href: "/our-team", label: "Our Team" },
+      { href: "/careers", label: "Careers" },
+      { href: "/faq", label: "FAQ" },
+      { href: "/reviews", label: "Reviews" },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  return currentPath === href || (href !== "/" && currentPath.startsWith(href));
+}
+---
+
+<header class="sticky top-0 z-50 bg-gray-200 border-b border-gray-300 shadow-sm">
+  <nav class="container-wide flex items-center justify-between h-16 lg:h-20">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/brand/logos/Attorney%20Assistant_H_FC.svg" alt="Attorney Assistant" class="h-10 lg:h-14 w-auto" />
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-6">
+      <li>
+        <a
+          href="/"
+          class:list={[
+            "font-body text-base font-medium transition-colors duration-200",
+            isActive("/") && currentPath === "/" ? "text-brand-blue" : "text-brand-black hover:text-brand-blue",
+          ]}
+        >
+          Home
+        </a>
+      </li>
+
+      {dropdowns.map((dropdown) => (
+        <li class="relative group">
+          <button
+            class:list={[
+              "font-body text-base font-medium transition-colors duration-200 flex items-center gap-1",
+              isActive(dropdown.href) ? "text-brand-blue" : "text-brand-black hover:text-brand-blue",
+            ]}
+            type="button"
+          >
+            {dropdown.label}
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul class="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            {dropdown.items.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "block px-4 py-2 text-sm transition-colors",
+                    isActive(item.href) ? "text-brand-blue bg-blue-50" : "text-brand-black hover:bg-gray-50 hover:text-brand-blue",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+
+      <li>
+        <a
+          href="/blog"
+          class:list={[
+            "font-body text-base font-medium transition-colors duration-200",
+            isActive("/blog") ? "text-brand-blue" : "text-brand-black hover:text-brand-blue",
+          ]}
+        >
+          Blog
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/contact"
+          class:list={[
+            "font-body text-base font-medium transition-colors duration-200",
+            isActive("/contact") ? "text-brand-blue" : "text-brand-black hover:text-brand-blue",
+          ]}
+        >
+          Contact
+        </a>
+      </li>
+
+      <li>
+        <a href="/contact" class="btn-primary text-base">Book a Call</a>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100">
+    <ul class="px-4 py-4 space-y-1">
+      <li>
+        <a
+          href="/"
+          class:list={["block py-2 font-body text-base", currentPath === "/" ? "text-brand-blue font-medium" : "text-brand-black"]}
+        >
+          Home
+        </a>
+      </li>
+
+      {dropdowns.map((dropdown) => (
+        <li class="mobile-dropdown">
+          <button
+            class="mobile-dropdown-btn w-full flex items-center justify-between py-2 font-body text-base text-brand-black"
+            type="button"
+          >
+            {dropdown.label}
+            <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul class="mobile-dropdown-menu hidden pl-4 space-y-1">
+            {dropdown.items.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "block py-1.5 text-sm",
+                    isActive(item.href) ? "text-brand-blue font-medium" : "text-gray-600 hover:text-brand-blue",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+
+      <li>
+        <a
+          href="/blog"
+          class:list={["block py-2 font-body text-base", isActive("/blog") ? "text-brand-blue font-medium" : "text-brand-black"]}
+        >
+          Blog
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/contact"
+          class:list={["block py-2 font-body text-base", isActive("/contact") ? "text-brand-blue font-medium" : "text-brand-black"]}
+        >
+          Contact
+        </a>
+      </li>
+
+      <li class="pt-2">
+        <a href="/contact" class="btn-primary w-full text-center text-sm">Book a Call</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!expanded));
+    menu?.classList.toggle("hidden");
+  });
+
+  // Mobile dropdown toggles
+  document.querySelectorAll(".mobile-dropdown-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const menu = btn.nextElementSibling;
+      const arrow = btn.querySelector("svg");
+      menu?.classList.toggle("hidden");
+      arrow?.classList.toggle("rotate-180");
+    });
+  });
+</script>

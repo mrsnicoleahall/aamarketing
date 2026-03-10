@@ -1,0 +1,45 @@
+{
+  "name": "attorney-assistant-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "migrate:extract-routes": "tsx scripts/extract-routes.ts",
+    "migrate:generate-redirects": "tsx scripts/generate-redirects.ts",
+    "migrate:export-wp": "tsx scripts/export-wp-content.ts",
+    "migrate:parse-xml": "tsx scripts/parse-wp-xml.ts",
+    "migrate:download-images": "tsx scripts/download-wp-images.ts",
+    "setup:testimonials": "tsx scripts/setup-hubdb-testimonials.ts",
+    "lint": "astro check",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@astrojs/mdx": "^3.1.0",
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.1.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "astro": "^4.15.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.0.0",
+    "@storybook/addon-essentials": "^8.4.0",
+    "@storybook/addon-links": "^8.4.0",
+    "@storybook/blocks": "^8.4.0",
+    "@storybook/html": "^8.4.0",
+    "@storybook/html-vite": "^8.4.0",
+    "@types/node": "^22.0.0",
+    "@types/xml2js": "^0.4.14",
+    "storybook": "^8.4.0",
+    "tsx": "^4.19.0",
+    "xml2js": "^0.6.2"
+  }
+}

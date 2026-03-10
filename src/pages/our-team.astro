@@ -1,0 +1,103 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import CTABanner from "@components/CTABanner.astro";
+
+const leaders = [
+  {
+    name: "Ethen Ostroff",
+    title: "CEO",
+    bio: "CEO of Ethen Ostroff Law. Licensed in Pennsylvania, Ethen fights for the hurt and vulnerable. His mission: co-counsel and represent over 1 million plaintiffs and staff over 1 million people.",
+    image: "/wp-content/uploads/2025/01/Untitled-design-4.jpg",
+  },
+  {
+    name: "James DiBitetto",
+    title: "COO",
+    bio: "Data expert with 7+ years in the pharmaceutical industry. James brings expertise in leading international teams and a passion for operational excellence.",
+    image: "/wp-content/uploads/2025/09/James-D-768x768-removebg-preview.png",
+  },
+  {
+    name: "Ryan Sawyer",
+    title: "CSO",
+    bio: "Chief Strategy Officer leading growth, innovation, and operational strategy. Former Surveillance Officer in Maricopa County and COO of a fast-growing law firm.",
+    image: null,
+    initials: "RS",
+  },
+];
+
+const departments = ["Marketing", "Client Success", "Sales", "Recruitment", "IA Liaison", "Tech"];
+---
+
+<BaseLayout title="Our Team" description="Behind every successful staffing company there is a dedicated team — meet ours at Attorney Assistant.">
+
+  <Hero
+    title="Our Team"
+    subtitle="Behind every successful staffing company there is a dedicated team — meet ours at Attorney Assistant."
+  />
+
+  <!-- Leadership -->
+  <section class="py-16 lg:py-24">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Leadership
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {leaders.map((leader) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+            {leader.image ? (
+              <img
+                src={leader.image}
+                alt={leader.name}
+                class="w-full h-[200px] rounded-xl object-cover mb-6"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-full h-[200px] rounded-xl bg-brand-navy/10 flex items-center justify-center mb-6">
+                <span class="text-4xl font-heading font-bold text-brand-navy/40">
+                  {leader.initials}
+                </span>
+              </div>
+            )}
+
+            <h3 class="text-xl font-heading font-bold text-brand-navy mb-1">
+              {leader.name}
+            </h3>
+            <p class="text-brand-gold font-heading font-semibold mb-4">
+              {leader.title}
+            </p>
+            <p class="text-gray-600 leading-relaxed text-sm">
+              {leader.bio}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="container-wide">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-navy mb-12 text-center">
+        Our Departments
+      </h2>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        {departments.map((dept) => (
+          <span class="inline-flex items-center px-6 py-3 rounded-full bg-white border border-gray-200 shadow-sm font-heading font-semibold text-brand-navy text-sm">
+            {dept}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Join Our Team"
+    body="We're always looking for talented people who share our mission."
+    buttonText="View Careers"
+    buttonLink="/careers"
+    variant="gold"
+  />
+
+</BaseLayout>
