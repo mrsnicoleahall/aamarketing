@@ -13,7 +13,7 @@ env:
   SITE_URL: ${{ secrets.SITE_URL || 'https://attorneyassistant.com' }}
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,52 +31,14 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to FTP
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          path: dist/
-
-  # Deploy to GitHub Pages
-  deploy-github-pages:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # Alternative: Deploy to Cloudflare Pages
-  # Uncomment and configure if using Cloudflare Pages instead
-  # deploy-cloudflare:
-  #   if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #         cache: npm
-  #
-  #     - name: Install dependencies
-  #       run: npm ci
-  #
-  #     - name: Build site
-  #       run: npm run build
-  #
-  #     - name: Deploy to Cloudflare Pages
-  #       uses: cloudflare/wrangler-action@v3
-  #       with:
-  #         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-  #         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-  #         command: pages deploy dist/ --project-name=attorney-assistant
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || '/' }}
+          exclude: |
+            **/*.mp4
